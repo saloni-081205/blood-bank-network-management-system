@@ -10,14 +10,15 @@ const {
 } = require('../controllers/hospitalController');
 const { verifyToken } = require('../middleware/authMiddleware');
 const { isAdmin, isHospital } = require('../middleware/roleMiddleware');
+const { phoneValidator, optionalPhoneValidator } = require('../utils/validators');
 
 const router = express.Router();
 
 const profileValidation = [
-    body('name').notEmpty().withMessage('Name is required'),
-    body('phone').notEmpty().withMessage('Phone is required'),
-    body('hospital_name').notEmpty().withMessage('Hospital name is required'),
-    body('contact_number').notEmpty().withMessage('Contact number is required'),
+    body('name').trim().notEmpty().withMessage('Name is required'),
+    phoneValidator('phone'),
+    body('hospital_name').trim().notEmpty().withMessage('Hospital name is required'),
+    optionalPhoneValidator('contact_number'),
 ];
 
 // Self routes (hospital only)

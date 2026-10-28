@@ -7,13 +7,14 @@ const {
 const { verifyToken } = require('../middleware/authMiddleware');
 const { isAdmin, isDonor } = require('../middleware/roleMiddleware');
 const { getDonationsByDonor } = require('../controllers/donationController');
+const { phoneValidator, optionalPhoneValidator } = require('../utils/validators');
 
 const router = express.Router();
 
 // Validation rules
 const profileValidation = [
-    body('name').notEmpty().withMessage('Name is required'),
-    body('phone').notEmpty().withMessage('Phone is required'),
+    body('name').trim().notEmpty().withMessage('Name is required'),
+    phoneValidator('phone'),
     body('date_of_birth').isISO8601().withMessage('Valid date of birth required'),
     body('gender').isIn(['MALE', 'FEMALE', 'OTHER']).withMessage('Invalid gender'),
     body('blood_group')

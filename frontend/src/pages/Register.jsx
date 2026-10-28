@@ -147,8 +147,19 @@ const Register = () => {
                             </div>
                             <div>
                                 <label className="block text-sm font-medium text-slate-700">Phone *</label>
-                                <input type="text" name="phone" required value={formData.phone}
-                                    onChange={handleChange} className={inputClass} placeholder="1234567890" />
+                    <input
+                        type="tel"
+                        name="phone"
+                        required
+                        pattern="(\+91)?[6-9][0-9]{9}"
+                        maxLength="13"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        className={inputClass}
+                        placeholder="9876543210"
+                        title="10-digit Indian mobile number (optional +91 prefix)"
+                    />
+                    <p className="text-xs text-slate-500 mt-1">10 digits, starting with 6-9</p>
                             </div>
                         </div>
 
@@ -211,10 +222,18 @@ const Register = () => {
                                         className={inputClass} placeholder="LIC-12345" />
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-medium text-slate-700">Contact Number *</label>
-                                    <input type="text" name="contact_number" required
-                                        value={formData.contact_number} onChange={handleChange}
-                                        className={inputClass} placeholder="9876543210" />
+                                     <label className="block text-sm font-medium text-slate-700">Contact Number *</label>
+    <input
+        type="tel"
+        name="contact_number"
+        required
+        pattern="(\+91)?[6-9][0-9]{9}"
+        maxLength="13"
+        value={formData.contact_number}
+        onChange={handleChange}
+        className={inputClass}
+        placeholder="9876543210"
+    />
                                 </div>
                                 <div className="md:col-span-2">
                                     <label className="block text-sm font-medium text-slate-700">Address</label>
