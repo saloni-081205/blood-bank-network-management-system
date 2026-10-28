@@ -1,5 +1,6 @@
 const db = require('../config/db');
 const { validationResult } = require('express-validator');
+const { notifyIfLowStock } = require('../services/inventoryAlert');
 
 // Blood shelf life in days (per project policy)
 const SHELF_LIFE_DAYS = 42;
