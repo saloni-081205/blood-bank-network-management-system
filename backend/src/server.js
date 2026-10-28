@@ -9,6 +9,8 @@ const hospitalRoutes = require('./routes/hospitalRoutes');
 const requestRoutes = require('./routes/requestRoutes');
 const notificationRoutes = require('./routes/notificationRoutes');
 const dashboardRoutes = require('./routes/dashboardRoutes');
+const publicRoutes = require('./routes/publicRoutes');
+
 
 dotenv.config();
 
@@ -32,6 +34,7 @@ app.use('/api/hospitals', hospitalRoutes);
 app.use('/api/requests', requestRoutes);
 app.use('/api/notifications', notificationRoutes);
 app.use('/api/dashboard', dashboardRoutes);
+app.use('/api/public', publicRoutes);
 
 // Test route
 app.get('/api/test', (req, res) => {

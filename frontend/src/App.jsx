@@ -24,6 +24,7 @@ import HospitalManagement from './pages/admin/HospitalManagement';
 import BloodRequests from './pages/admin/BloodRequests';
 import EmergencyQueue from './pages/admin/EmergencyQueue';
 import Notifications from './pages/Notifications';
+import Landing from './pages/Landing';
 
 const AppRoutes = () => {
     const { user } = useAuth();
@@ -66,13 +67,13 @@ const AppRoutes = () => {
     </ProtectedRoute>
 } />
 
-                {/* Root */}
+                {/* Root — landing for guests, dashboard for logged-in */}
                 <Route path="/" element={
                     user ? (
                         user.role === 'ADMIN' ? <Navigate to="/admin" /> :
                         user.role === 'DONOR' ? <Navigate to="/donor" /> :
                         <Navigate to="/hospital" />
-                    ) : <Navigate to="/login" />
+                    ) : <Landing />
                 } />
             </Routes>
         </div>
